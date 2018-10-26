@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  text: MyString
+  description: 
+  item_id: 1
+  exp_id: 1
+
+two:
+  text: MyString
+  description: 
+  item_id: 1
+  exp_id: 1
