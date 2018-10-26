@@ -1,15 +1,10 @@
 <section class="strips">
   <article class="strips__strip">
-    <%= link_to new_user_session_path do%>
-    <div class="strip__content">
-      <h1 class="strip__title">Login</h1>
-    </div>
-    <%end%>
-  </article>
-  <article class="strips__strip">
+    <%= link_to locations_path do%>
     <div class="strip__content">
       <h1 class="strip__title">Games</h1>
     </div>
+    <%end%>
   </article>
   <article class="strips__strip">
     <div class="strip__content">
@@ -30,6 +25,21 @@
       <h1 class="strip__title">Contact</h1>
     </div>
     </a>
+  </article>
+  <article class="strips__strip">
+  <% if current_user.nil? %>
+    <%= link_to new_user_session_path do%>
+      <div class="strip__content">
+        <h1 class="strip__title">Login</h1>
+      </div>
+    <%end%>
+    <% else %>
+      <%= link_to destroy_user_session_path, method: :delete   do %>
+        <div class="strip__content">
+          <h1 class="strip__title">Exit</h1>
+        </div>
+      <%end%>
+  <%end%>
   </article>
   </section>
 
