@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
-	before_action :authenticate_member!
-	before_action :get_,except:[:index,:new,:create]
+	before_action :authenticate_user!
+	before_action :get_location,except:[:index,:new,:create]
 
 	def show
 

@@ -10,4 +10,8 @@ Rails.application.routes.draw do
 
 	end
 
+	resources :quests ,except:[:index] do
+
+	end 
+
 end
