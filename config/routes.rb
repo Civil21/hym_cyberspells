@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
 	root to:"pages#index"
-	get "pages/about"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+	get "about", to: "pages#about"
+	get "info", to: "pages#info"
+
+	resources :locations do
+
+	end
+
 end
