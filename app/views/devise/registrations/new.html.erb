@@ -1,0 +1,35 @@
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <div class="login100-form-title" style="background-image: url('<%= asset_path('login-bg.jpg') %>');">
+        <span class="login100-form-title-1">
+          Create your new account
+        </span>
+      </div>
+
+      <div class="col-md-6 col-md-offset-3 login-box">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-signin'}) do |f| %>
+          <%= devise_error_messages! %>
+          <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email Address', required: true %>
+
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters at least)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password', required: true %>
+
+          <br>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Password confirmation', required: true %>
+
+          <br>
+
+          <%= button_tag( :class => "btn btn-lg btn-primary btn-block") do %>
+            <i class="zmdi zmdi-check m-r-xs"></i> Create an account
+          <% end %>
+          <div class="login-links">
+            <a href="<%= new_session_path(resource_name) %>" class="m-0"><i class="zmdi zmdi-sign-in m-r-xs"></i>Have you already created an account?</a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
