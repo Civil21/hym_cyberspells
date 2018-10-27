@@ -1,4 +1,4 @@
 class GameLog < ApplicationRecord
-	has_many :locations
-	has_and_belongs_to_many :player
+	has_and_belongs_to_many :locations
+	belongs_to :player
 end

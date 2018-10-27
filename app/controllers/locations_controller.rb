@@ -3,10 +3,15 @@ class LocationsController < ApplicationController
 	before_action :get_location,except:[:index,:new,:create]
 
 	def show
+		get_game_log
+		@game_log.locations.except(@location)
 		#перевірка чи користувач на локаціїї 
 		if(@player.location !=[])
 			@location = @player.location.first
 		else
+			@game_log.text = @game_log.text.to_s+"Ви відправились в "+@location.name.to_s
+			@game_log.text += "\n"+@location.description
+			@game_log.save
 			@player.location.clear
 			@player.location << @location
 			#@player.game_log.text = @location.description
@@ -33,6 +38,9 @@ class LocationsController < ApplicationController
 				else
 					@variants = @quest.variants
 				end
+				@game_log.text += "Ви розпочали  "+@quest.name
+				@game_log.text += "\n"+@quest.description
+				@game_log.save
 			else
 				redirect_to new_quest_path
 			end
@@ -43,7 +51,7 @@ class LocationsController < ApplicationController
 		if(@player.location != [])
 			redirect_to location_path(Location.find(@player.location.ids).first.name)  
 		else
-			if(@game_log)
+			if(@game_log&& @game_log.locations !=[])
 				@locations=@game_log.locations
 				else
 				@locations = Location.all
@@ -78,6 +86,14 @@ class LocationsController < ApplicationController
   	def get_location
 		@location = Location.find_by(name: params[:id])
 		@location ||= Location.find(params[:id])
+	end
+
+	def get_game_log
+		@game_log= @player.game_log
+		if(!@game_log)
+			@game_log=GameLog.create()
+			@player.game_log = @game_log
+		 end
 	end
 
   	def location_params

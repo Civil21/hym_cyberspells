@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181027131342) do
+ActiveRecord::Schema.define(version: 20181027144630) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -60,6 +60,11 @@ ActiveRecord::Schema.define(version: 20181027131342) do
     t.integer "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "game_logs_locations", force: :cascade do |t|
+    t.integer "game_log_id"
+    t.integer "location_id"
   end
 
   create_table "items", force: :cascade do |t|

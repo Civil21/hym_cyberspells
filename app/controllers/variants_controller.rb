@@ -51,20 +51,27 @@ class VariantsController < ApplicationController
 	def check
 		if((@player.quest != [] and @player.quest.first.variants.include? @variant) or (@player.variant != [] and VariantNext.new.findVariants(@player).include? @variant))
 			@player.variant.clear
+				@game_log.text += "Ви  "+@variant.text
+				@game_log.text += "\n"+@variant.description
+				@game_log.save
 			if(@variant.isFinish)
+				
 				@player.xp = @player.xp.to_i+10
 				@player.save
 				@player.location.clear
 				@player.quest.clear
 				if(@variant.exp_id) 
+					@game_log.text += "Ви отримали титул "+Exp.find(@variant.exp_id).name
 					@player.exps << Exp.find(@variant.exp_id)
 				end
 				if(@variant.isDeath)
 					@player.items.clear
-					@game_log.text = nil
+					@game_log.text +="Ви померли під час квест, спробуйте знову , може вам повезе іншого разу!"
 					@game_log.locations.clear
 				else
+					@game_log.text += "Ви успішно виконали квест"
 					if(@variant.item_id) 
+						@game_log.text += "Ви отримали "+Item.find(@variant.item_id).name
 						@player.items << Item.find(@variant.item_id) 
 					end
 				end
