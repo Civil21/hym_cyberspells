@@ -1,5 +1,5 @@
 class Location < ApplicationRecord
-	has_many :questions
+	has_many :quests
 
 	validates :name, presence: true
 	validates :description, presence: true
