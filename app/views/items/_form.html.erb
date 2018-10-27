@@ -9,8 +9,8 @@
 	<%= f.text_area :description, class: 'form-control'%>
 </div>
 
-<%= form_for @item, url: items_path, html: { multipart: true } do |f| %>
+<div class="form-group">
   <%= f.file_field :image %>
-<% end %>
+</div>
 
 <%= f.submit :save %>

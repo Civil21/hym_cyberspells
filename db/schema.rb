@@ -108,7 +108,6 @@ ActiveRecord::Schema.define(version: 20181027144630) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "exp"
     t.integer "xp", default: 0
   end
 
