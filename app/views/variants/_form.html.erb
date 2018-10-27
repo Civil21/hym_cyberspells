@@ -1,6 +1,6 @@
 <div class="form-group">
-	<%= f.label :name %>
-	<%= f.text_field :name, class: 'form-control',autofocus: true %>
+	<%= f.label :text %>
+	<%= f.text_field :text, class: 'form-control',autofocus: true %>
 </div>
 
 <div class="form-group">
@@ -9,8 +9,8 @@
 </div>
 
 <div class="form-group">
-	<%= f.label :question %>
-	<%= f.select :question_id, Quest.all.collect { |p| [ p.name, p.id ] }, include_blank: true, class: 'form-control'%>
+	<%= f.label :quest %>
+	<%= f.select :quest_id, Quest.all.collect { |p| [ p.name, p.id ] }, include_blank: true, class: 'form-control'%>
 </div>
 
 <div class="form-group">
@@ -20,7 +20,7 @@
 
 <div class="form-group">
 	<%= f.label "Якщо це належить квесту " %>
-	<%= f.check_box :question_sel, class: 'form-control'%>
+	<%= f.check_box :quest_sel, class: 'form-control'%>
 </div>
 
 <%= f.submit :save %>

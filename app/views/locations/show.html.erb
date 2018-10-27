@@ -6,4 +6,6 @@
 <hr>
 <%= @quest.name %>
 <hr>
-<%= render @variants %>
+<%@variants.each do |variant| %>
+<%= render '/variants/variant', variant:variant %>
+<%end%>
