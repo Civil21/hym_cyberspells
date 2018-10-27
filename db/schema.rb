@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181027045817) do
+ActiveRecord::Schema.define(version: 20181027052258) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -76,11 +76,9 @@ ActiveRecord::Schema.define(version: 20181027045817) do
     t.integer "player_id"
   end
 
-  create_table "locations_quests", id: false, force: :cascade do |t|
-    t.integer "location"
-    t.integer "quest"
-    t.index ["location"], name: "index_locations_quests_on_location"
-    t.index ["quest"], name: "index_locations_quests_on_quest"
+  create_table "locations_quests", force: :cascade do |t|
+    t.integer "location_id"
+    t.integer "quest_id"
   end
 
   create_table "players", force: :cascade do |t|

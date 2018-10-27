@@ -4,45 +4,43 @@ class LocationsController < ApplicationController
 
 	def show
 		#перевірка чи користувач на локаціїї 
-		if(@player.locations !=[])
-			@location = @player.locations
+		if(@player.location !=[])
+			@location = @player.location.first
 		else
-			@player.locations.clear
-			@player.locations << @location
+			@player.location.clear
+			@player.location << @location
 			#@player.game_log.text = @location.description
 			#@player.game_log.save
-			@player.save
 		end
 
-		if(@player.quests != [])
+		if(@player.quest != [])
 			#обрати квест що проходить користувач
-			@quest = Quest.find(@player.quests.ids)
+			@quest = Quest.find(@player.quest.ids).first
 		else
 			#вибрати новий квест для користувача 
-			@quests = @location.quests
-  			if(@quests !=[])
+			pp @location.quests
+  			if(@location.quests != [])
+  				@quests = @location.quests
 				@quest = @quests[Random.new.rand(@quests.length)]
-				@player.quests.clear
-				@player.quests << @quest
-				@player.save
+				@quest = @quest.first
+				@player.quest.clear
+				@player.quest << @quest
+				if(@player.variant != [])
+					@variants = Variant.find(@player.variant.ids).first.variants
+				else
+					@variants = @quest.variants
+				end
 			else
 				redirect_to new_quest_path
 			end
 		end
 
-		if(@player.variants != [])
-			@variants = Variant.find(@player.variants.ids).first.variants
-		else
-			pp @quest
-			pp @quest.variants
-			pp @variants
-			@variants = @quest.variants
-		end
+
 	end
 
 	def index
-		if(@player.locations != [])
-			redirect_to location_path(Location.find(@player.locations.ids).first.name)  
+		if(@player.location != [])
+			redirect_to location_path(Location.find(@player.location.ids).first.name)  
 		else
 			if(@game_log)
 				@locations=@game_log.locations
@@ -78,7 +76,7 @@ class LocationsController < ApplicationController
 
   	def get_location
 		@location = Location.find_by(name: params[:id])
-		@location ||=Location.find(params[:id])
+		@location =Location.find(params[:id])
 	end
 
   	def location_params
