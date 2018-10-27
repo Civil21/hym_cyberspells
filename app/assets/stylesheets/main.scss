@@ -31,7 +31,6 @@ body a{
       width: 100%;
       position: absolute;
       top: 40%;
-      left: 10px;
       text-transform: uppercase;
       font-size: 24px;
       margin: 15px 0 0 0;
@@ -504,7 +503,7 @@ a { text-decoration: none; }
   -o-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   padding-top: 0;
-  z-index:2;
+  z-index:4;
 }
 
 .nav-fostrap li ul.dropdown li {
@@ -697,8 +696,8 @@ a { text-decoration: none; }
 /*******Inventar user*******/
 /***************************/
 $maxWidth : 960px;
-$cardWidth : 100px;
-$cardHeight : 100px;
+$cardWidth : 120px;
+$cardHeight : 120px;
 
 $colorMain : #fff;
 $colorMainDarker : #fff;
