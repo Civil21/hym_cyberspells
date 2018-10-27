@@ -37,11 +37,19 @@ class VariantsController < ApplicationController
   		redirect_to variants_path
 	end
 
+	def check
+		if((@player.quest != [] and @player.quest.first.variants.include? @variant) or (@player.variant != [] and @player.variant.variants.include? @variant))
+			@player.variant.clear
+			@player.variant << @variant
+		end
+		redirect_to location_path(@player.location.first.name)
+	end
+
 	private 
 
-  	def get_location
-		@variant = Variant.find_by(name: params[:id])
-		@variant ||=Variant.find(params[:id])
+  	def get_variant
+
+		@variant =Variant.find(params[:variant_id])
 	end
 
   	def variant_params
