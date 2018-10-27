@@ -15,7 +15,7 @@
 
 <div class="form-group">
 	<%= f.label :variant %>
-	<%= f.select :variant_id, Variant.all.collect { |p| [ p.name, p.id ] }, include_blank: true, class: 'form-control'%>
+	<%= f.select :variant_id, Variant.all.collect { |p| [ p.text, p.id ] }, include_blank: true, class: 'form-control'%>
 </div>
 
 <div class="form-group">
