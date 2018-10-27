@@ -3,11 +3,24 @@ class LocationsController < ApplicationController
 	before_action :get_location,except:[:index,:new,:create]
 
 	def show
-		@quests = @location.quests
+		if(@player.location==@location and !@player.quest)
+			@quests = @location.quests.to_a
+			@quest = @quests[Random.new.rand(@quest.lenght)]
+		else
+			@quest = @player.quest
+		end
 	end
 
 	def index
-		@locations = Location.all
+		if(@player.location != nil)
+			redirect_to location_path(@player.location.name)  
+		else
+			if(@sys_log)
+				@locations=@sys_log.locations
+				else
+				@locations = Location.all
+			end
+		end
 	end
 
 	def new

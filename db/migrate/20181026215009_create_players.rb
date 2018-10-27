@@ -4,6 +4,7 @@ class CreatePlayers < ActiveRecord::Migration[5.1]
       t.integer :user_id
       t.integer :location_id
       t.integer :quest_id
+      t.integer :variant_id
       t.string :name
 
       t.timestamps

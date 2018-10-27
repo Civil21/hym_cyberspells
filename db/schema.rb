@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181026221844) do
+ActiveRecord::Schema.define(version: 20181027005245) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -50,6 +50,13 @@ ActiveRecord::Schema.define(version: 20181026221844) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "game_logs", force: :cascade do |t|
+    t.string "text"
+    t.integer "player_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -68,6 +75,7 @@ ActiveRecord::Schema.define(version: 20181026221844) do
     t.integer "user_id"
     t.integer "location_id"
     t.integer "quest_id"
+    t.integer "variant_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -76,6 +84,7 @@ ActiveRecord::Schema.define(version: 20181026221844) do
   create_table "quests", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.integer "location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
