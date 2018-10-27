@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
 	def create
 		@item=Item.create(item_params)
   		if @item.save
-			redirect_to items_path  		
+			redirect_to root_path  		
     	else
   			render 'new'
   		end
@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
 		@item ||=Item.find(params[:id])
 	end
 
-  	def location_params
+  	def item_params
   		params.require(:item).permit(:name,:description)
   	end
 end

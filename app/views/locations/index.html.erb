@@ -1,9 +1,12 @@
 <%= render 'layouts/navbar' %>
+<script>
+	$("#nav").addClass('nav-color1');
+</script>
  <div class="container">
 <br>
  	<% @locations.each do |location| %>
  	<div class="col-sm-6 col-md-4 col-lg-3 mt-4"> 
- 		<%= link_to location_path(location.name) do%>
+ 		<%= link_to location_path(location.id) do%>
  		<div class="cardcub">
 		<p class="title"><%=location.name%></p>
 		</div>

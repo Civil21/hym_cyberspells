@@ -1,18 +1,20 @@
 <section class="strips">
   <article class="strips__strip">
-    <%= link_to locations_path do %>
+    <%= link_to locations_path, data:{turbolinks: false} do %>
     <div class="strip__content">
       <h1 class="strip__title" data: { no_turbolink: true }>Game</h1>
     </div>
     <%end%>
   </article>
   <article class="strips__strip">
+    <%= link_to items_path, data:{turbolinks: false}  do %>
     <div class="strip__content">
-      <h1 class="strip__title">Gallery</h1>
+      <h1 class="strip__title">Items</h1>
     </div>
+    <%end%>
   </article>
   <article class="strips__strip">
-    <%= link_to about_path do%>
+    <%= link_to about_path, data:{turbolinks: false} do%>
     <div class="strip__content">
       <h1 class="strip__title">About</h1>
     </div>

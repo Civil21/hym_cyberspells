@@ -14,6 +14,10 @@ body a{
   }
 }
 
+
+/***************************/
+/************Card***********/
+/***************************/
 .cardcub{
   z-index:0;
   width: 284px;
@@ -39,6 +43,8 @@ body a{
     .cardcub:hover {
     background-color: #2980B9;
    }
+/***************************/  
+
 
 /***************************/
 /********Index pages********/
@@ -285,6 +291,7 @@ h2 {
 p {
   margin: 0 0 16px;
 }
+/***************************/  
 
 
 /***************************/
@@ -406,15 +413,51 @@ p {
 }
 a { text-decoration: none; }
 
+/***************************/ 
+
 
 /***************************/
 /********Navbar page********/
 /***************************/
 
+.nav-color1{background: $color1; 
+  .nav-fostrap li:hover a {
+  background: #2980B9;
+  color: #fff !important;
+  }
+  .nav-fostrap li ul.dropdown li:hover a { background: rgba(0,0,0, .1); }
+}
+
+.nav-color2{background: $color2;
+.nav-fostrap li:hover a {
+  background: #7BD2F3;
+  color: #fff !important;
+  }
+  .nav-fostrap li ul.dropdown li:hover a { background: $color2; }
+  }
+
+.nav-color3{background: $color3;
+.nav-fostrap li:hover a {
+  background: #ED49B4;
+  color: #fff !important;
+  }
+  .nav-fostrap li ul.dropdown li:hover a { background: $color3; }
+  }
+
+.nav-color4{background: $color4;}
+
+.nav-color5{background: $color5;
+.nav-fostrap li:hover a {
+  background: #F16767;
+  color: #fff !important;
+  }
+  .nav-fostrap li ul.dropdown li:hover a { background: $color5; }
+  }
+
 .nav-fostrap {
   display: block;
   margin-bottom: 15px 0;
-  background: $color1;
+  
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   -ms-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
@@ -480,10 +523,7 @@ a { text-decoration: none; }
 
 .nav-fostrap li ul.dropdown li:last-child a { border-bottom: none; }
 
-.nav-fostrap li:hover a {
-  background: #2980B9;
-  color: #fff !important;
-}
+
 
 .nav-fostrap li:first-child:hover a { border-radius: 3px 0 0 3px; }
 
@@ -651,6 +691,7 @@ a { text-decoration: none; }
   right: 0;
   left: 0;
 }
+/***************************/ 
 
 
 /***************************/
@@ -665,6 +706,9 @@ $colorMainDarker : #2980b9;
 $colorSecundary : #9b59b6;
 $colorSecundaryDarker : #9b59b6;
 
+.inventary{
+
+}
 
 .element-card {
   position: relative;
@@ -772,4 +816,171 @@ $colorSecundaryDarker : #9b59b6;
     }
   }
 
+}
+
+/***************************/ 
+
+
+/***************************/
+/*********Stats user********/
+/***************************/
+
+.stats{}
+
+/***************************/ 
+
+
+/***************************/
+/********About pages********/
+/***************************/
+.about{
+ width: 900px;
+ background:$color3;
+ color:#fff;
+ border-radius:20px;
+ padding:15px 15px 15px; 
+}
+
+.movie_card{
+  position: relative;
+  display: block;
+  width: 800px;
+  height: 350px;
+  margin: 80px auto; 
+  overflow: hidden;
+  border-radius: 10px;
+  transition: all 0.4s;
+  box-shadow: 0px 0px 120px -25px rgba(0,0,0, 0.5);
+  &:hover{
+    transform: scale(1.02);
+    box-shadow: 0px 0px 80px -25px rgba(0,0,0, 0.5);
+    transition: all 0.4s;
+  }
+  .info_section{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-blend-mode: multiply;
+    z-index: 2;
+    border-radius: 10px;
+    .movie_header{
+      position: relative;
+      padding: 25px;
+      height: 40%;
+      h1{
+        color: black;
+        font-weight: 400;
+      }
+      h4{
+        color: #555;
+        font-weight: 400;
+      }
+      .minutes{
+        display: inline-block;
+        margin-top: 15px;
+        color: #555;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid rgba(0,0,0,0.05);
+      }
+      .type{
+        display: inline-block;
+        color: #959595;
+        margin-left: 10px;
+      }
+      .locandina{
+        position: relative;
+        float: left;
+        margin-right: 20px;
+        height: 120px;
+        box-shadow: 0 0 20px -10px rgba(0,0,0,0.5);
+      }
+    }
+    .movie_desc{
+      padding: 25px;
+      height: 50%;
+      .text{
+        color: #545454;
+      }
+    }
+    .movie_social{
+      height: 10%;
+      padding-left: 15px;
+      padding-bottom: 20px;
+      ul{
+        list-style: none;
+        padding: 0;
+        li{
+          display: inline-block;
+          color: rgba(0,0,0,0.3);
+          transition: color 0.3s;
+          transition-delay: 0.15s;
+          margin: 0 10px;
+          &:hover{
+            transition: color 0.3s;
+            color: rgba(0,0,0,0.7);
+          }
+          i{
+            font-size: 19px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  .blur_back{
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    height: 100%; right: 0;
+    background-size: cover;
+    border-radius: 11px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .movie_header{
+    width: 65%;
+  }
+  
+  .movie_desc{
+    width: 100%;
+  }
+  
+  .info_section{
+    background: linear-gradient(to right, $color3 50% 50%, transparent 100%);
+  }
+  
+  .blur_back{
+    width: 80%;
+    background-position: -100% 10% !important;  
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .movie_card{
+    width: 95%;
+    margin: 70px auto; 
+    min-height: 350px;
+    height: auto;
+  }
+  
+  .blur_back{
+    width: 100%;
+    background-position: 50% 50% !important;  
+  }
+  
+  .movie_header{
+    width: 100%;
+    margin-top: 85px;
+  }
+  
+  .movie_desc{
+    width: 100%;
+  }
+  
+  .info_section{
+    background: linear-gradient(to top, $color3 50%, transparent 100%);
+    display: inline-grid;
+  }
 }
