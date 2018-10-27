@@ -24,8 +24,7 @@ class QuestsController < ApplicationController
 	end
 
 	def update
-  			@quest.update(quest_params)
-    	end
+  		@quest.update(quest_params)
   		redirect_to quest_path(@quest.name)
 	end
 

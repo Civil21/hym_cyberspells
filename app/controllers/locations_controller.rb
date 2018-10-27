@@ -3,11 +3,11 @@ class LocationsController < ApplicationController
 	before_action :get_location,except:[:index,:new,:create]
 
 	def show
-
+		@quests = @location.quests
 	end
 
 	def index
-		
+		@loactions = @player.locations
 	end
 
 	def new
