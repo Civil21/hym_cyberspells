@@ -6,25 +6,19 @@ class LocationsController < ApplicationController
 		pp @player
 		if(@player.location_id and @player.location_id==@location.id)
 			if(@player.quest_id)
-				@quest = @player.quest
+				@quest = Quest.find(@player.quest_id)
 			else
-				@quests = @location.quests.to_a
-				@quest = @quests[Random.new.rand(@quests.length)]
-				@player.quest_id = @quest.id
-				@player.save
+				get_quest
 			end
 		else
 			if(@player.location_id)
 				redirect_to location_path(Location.find(@player.location_id).name)  
 			else
 				@player.location_id = @location.id
-				@quests = @location.quests.to_a
-				@quest = @quests[Random.new.rand(@quests.length)]
-				@player.quest_id = @quest.id
-				@player.save
-				pp @player
+				get_quest
 			end
 		end
+		pp @quest
 	end
 
 	def index
@@ -72,6 +66,17 @@ class LocationsController < ApplicationController
 
   	def location_params
   		params.require(:location).permit(:name,:description)
+  	end
+
+  	def get_quest
+  		@quests = @location.quests.to_a
+  		if(@quests)
+		@quest = @quests[Random.new.rand(@quests.length)]
+		@player.quest_id = @quest.id
+		@player.save
+		else
+			redirect_to new_quest_path
+		end
   	end
 
 end
