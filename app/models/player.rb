@@ -1,7 +1,7 @@
 class Player < ApplicationRecord
 	belongs_to :user
 	has_many :items
-	has_many :exp
+	has_many :exps
 	has_one :location
 	has_one :quest
 	has_one :variant

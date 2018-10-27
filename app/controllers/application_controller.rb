@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   	if(user_signed_in?)
   		if(current_user.player)
   			@player=current_user.player
+  			@game_log=@player.game_log
   		else
   			redirect_to new_player_path
   		end

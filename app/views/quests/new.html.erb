@@ -1,3 +1,17 @@
-<%=form_for :quest, url:quest_path() do |f|%>
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+     <div class="login100-form-title" style="background-image: url('<%= asset_path('login-bg.jpg') %>');">
+    <span class="login100-form-title-1">
+        </span>
+        </div>
+		<div class="col-md-6 col-md-offset-3 login-box">
+		<center>
+<%=form_for :quest, url:quests_path() do |f|%>
 	<%= render 'quests/form', f:f%>
-<%end%>
+			<%end%>
+		</center>
+		</div>
+    </div>
+  </div>
+</div>

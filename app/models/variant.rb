@@ -1,4 +1,5 @@
 class Variant < ApplicationRecord
+	belongs_to :player
 	has_one :item
 	has_one :exp
 	

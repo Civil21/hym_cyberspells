@@ -38,6 +38,6 @@ class QuestsController < ApplicationController
 	end
 
 	def quest_params
-		params.require(:quest).permit(:name,:description)
+		params.require(:quest).permit(:name,:description,:location_id)
 	end
 end
