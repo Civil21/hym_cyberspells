@@ -1,1 +1,10 @@
-<%=link_to variant.text, variant_check_path(variant.id), method: :post, class:"button-tables" %>
+<%=link_to  variant_check_path(variant.id), method: :post do %>
+<input type="checkbox" name="pasta" id="tonnarelli" class="checkbox-input"/>
+
+<label for="tonnarelli" class="checkbox-label">
+	<div class="checkbox-text">
+		<p class="checkbox-text--title"><%=variant.text%></p>
+		<p class="checkbox-text--description">Натисни для вибору Відповіді!</p>
+	</div>
+</label>
+<%end%>

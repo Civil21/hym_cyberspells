@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 	resources :players do 
 		get :items, to: "players#items"
 		get :exps, to: "players#exps"
+		get :rates, to: "players#rates"
 	end
 
 	resources :items,except:[:show] do 

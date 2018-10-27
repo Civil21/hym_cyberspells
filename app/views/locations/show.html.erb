@@ -28,13 +28,7 @@
 		</div>
 		<center></center>
 		<%@variants.each do |variant| %>
-		<input type="checkbox" name="pasta" id="tonnarelli" class="checkbox-input"/>
-		<label for="tonnarelli" class="checkbox-label">
-		  <div class="checkbox-text">
-			<p class="checkbox-text--title"><%= render '/variants/variant', variant:variant %></p>
-			<p class="checkbox-text--description">Натисни для вибору Відповіді!</p>
-			</div>
-		</label>
+			<%= render '/variants/variant', variant:variant %>
 		<%end%>
 	</div>
 </div>

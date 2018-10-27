@@ -35,6 +35,10 @@ class PlayersController < ApplicationController
 		
 	end
 
+	def rates
+		@players =Player.all.order("xp DESC")
+	end
+
 	private 
 
 	def get_player
@@ -42,6 +46,6 @@ class PlayersController < ApplicationController
 	end
 
 	def player_params
-		params.require(:player).permit(:name,:user_id,:location_id,:quest_id,:variant_id)
+		params.require(:player).permit(:name,:user_id,:location_id,:quest_id,:variant_id,:xp)
 	end
 end

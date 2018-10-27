@@ -52,6 +52,8 @@ class VariantsController < ApplicationController
 		if((@player.quest != [] and @player.quest.first.variants.include? @variant) or (@player.variant != [] and VariantNext.new.findVariants(@player).include? @variant))
 			@player.variant.clear
 			if(@variant.isFinish)
+				@player.xp = @player.xp.to_i+10
+				@player.save
 				@player.location.clear
 				@player.quest.clear
 				if(@variant.exp_id) 
