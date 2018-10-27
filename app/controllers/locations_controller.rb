@@ -22,7 +22,6 @@ class LocationsController < ApplicationController
   			if(@location.quests != [])
   				@quests = @location.quests
 				@quest = @quests[Random.new.rand(@quests.length)]
-				@quest = @quest.first
 				@player.quest.clear
 				@player.quest << @quest
 				if(@player.variant != [])
@@ -76,7 +75,7 @@ class LocationsController < ApplicationController
 
   	def get_location
 		@location = Location.find_by(name: params[:id])
-		@location =Location.find(params[:id])
+		@location ||= Location.find(params[:id])
 	end
 
   	def location_params
