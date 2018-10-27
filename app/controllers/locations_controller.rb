@@ -3,18 +3,18 @@ class LocationsController < ApplicationController
 	before_action :get_location,except:[:index,:new,:create]
 
 	def show
-		pp @player
-		if(@player.location_id and @player.location_id==@location.id)
-			if(@player.quest_id)
-				@quest = Quest.find(@player.quest_id)
+		if(@player.locations !=[] and Location.find(@player.locations.ids).first.id==@location.id)
+			pp @player.quests
+			if(@player.quests != [])
+				@quest = Quest.find(@player.quests.ids)
 			else
 				get_quest
 			end
 		else
-			if(@player.location_id)
-				redirect_to location_path(Location.find(@player.location_id).name)  
+			if(@player.locations != [])
+				redirect_to location_path(Location.find(@player.locations.ids).first.name)
 			else
-				@player.location_id = @location.id
+				@player.locations << @location
 				get_quest
 			end
 		end
@@ -22,10 +22,8 @@ class LocationsController < ApplicationController
 	end
 
 	def index
-		pp @player
-		pp @game_log
-		if(@player.location_id)
-			redirect_to location_path(Location.find(@player.location_id).name)  
+		if(@player.locations != [])
+			redirect_to location_path(Location.find(@player.locations.ids).first.name)  
 		else
 			if(@game_log)
 				@locations=@game_log.locations
@@ -69,10 +67,10 @@ class LocationsController < ApplicationController
   	end
 
   	def get_quest
-  		@quests = @location.quests.to_a
-  		if(@quests)
+  		@quests = @location.quests
+  		if(@quests !=[])
 		@quest = @quests[Random.new.rand(@quests.length)]
-		@player.quest_id = @quest.id
+		@player.quests << @quest
 		@player.save
 		else
 			redirect_to new_quest_path

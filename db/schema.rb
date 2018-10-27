@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181027005245) do
+ActiveRecord::Schema.define(version: 20181027034946) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -50,6 +50,11 @@ ActiveRecord::Schema.define(version: 20181027005245) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "exps_players", force: :cascade do |t|
+    t.integer "exp_id"
+    t.integer "player_id"
+  end
+
   create_table "game_logs", force: :cascade do |t|
     t.string "text"
     t.integer "player_id"
@@ -64,11 +69,21 @@ ActiveRecord::Schema.define(version: 20181027005245) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "items_players", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "player_id"
+  end
+
   create_table "locations", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "locations_players", force: :cascade do |t|
+    t.integer "location_id"
+    t.integer "player_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -79,6 +94,11 @@ ActiveRecord::Schema.define(version: 20181027005245) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "players_quests", force: :cascade do |t|
+    t.integer "player_id"
+    t.integer "quest_id"
   end
 
   create_table "quests", force: :cascade do |t|
@@ -113,6 +133,11 @@ ActiveRecord::Schema.define(version: 20181027005245) do
     t.integer "exp_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "variants_players", force: :cascade do |t|
+    t.integer "variant_id"
+    t.integer "player_id"
   end
 
 end

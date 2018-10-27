@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
 	resources :players do 
 		get :items, to: "players#items"
-		get :exps, to: "players#ezxps"
+		get :exps, to: "players#exps"
 	end
 
 	resources :items,except:[:show] do 
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 	resources :locations do
 	end
 
-	resources :quests ,except:[:index] do
+	resources :quests do
 	end 
 
 end
