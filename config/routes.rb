@@ -26,4 +26,8 @@ Rails.application.routes.draw do
 	resources :quests do
 	end 
 
+	resources :variants do
+	end 
+
+
 end

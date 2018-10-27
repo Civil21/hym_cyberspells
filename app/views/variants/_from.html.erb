@@ -1,0 +1,26 @@
+<div class="form-group">
+	<%= f.label :name %>
+	<%= f.text_field :name, class: 'form-control',autofocus: true %>
+</div>
+
+<div class="form-group">
+	<%= f.label :description %>
+	<%= f.text_area :description, class: 'form-control'%>
+</div>
+
+<div class="form-group">
+	<%= f.label :question %>
+	<%= f.select :question_id, Quest.all.collect { |p| [ p.name, p.id ] }, include_blank: true, class: 'form-control'%>
+</div>
+
+<div class="form-group">
+	<%= f.label :variant %>
+	<%= f.select :variant_id, Variant.all.collect { |p| [ p.name, p.id ] }, include_blank: true, class: 'form-control'%>
+</div>
+
+<div class="form-group">
+	<%= f.label "Якщо це належить квесту " %>
+	<%= f.check_box :question_sel, class: 'form-control'%>
+</div>
+
+<%= f.submit :save %>
