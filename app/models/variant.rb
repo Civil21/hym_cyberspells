@@ -1,7 +1,8 @@
 class Variant < ApplicationRecord
-	has_and_belongs_to_many :player
-	has_one :item
-	has_one :exp
+	has_and_belongs_to_many :players
+	has_and_belongs_to_many :quests
+	#belongs_to :item
+	#belongs_to :exp
 	
 	validates :text, presence: true
 	validates :description, presence: true

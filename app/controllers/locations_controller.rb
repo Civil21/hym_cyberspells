@@ -3,22 +3,41 @@ class LocationsController < ApplicationController
 	before_action :get_location,except:[:index,:new,:create]
 
 	def show
-		if(@player.locations !=[] and Location.find(@player.locations.ids).first.id==@location.id)
-			pp @player.quests
-			if(@player.quests != [])
-				@quest = Quest.find(@player.quests.ids)
-			else
-				get_quest
-			end
+		#перевірка чи користувач на локаціїї 
+		if(@player.locations !=[])
+			@location = @player.locations
 		else
-			if(@player.locations != [])
-				redirect_to location_path(Location.find(@player.locations.ids).first.name)
+			@player.locations.clear
+			@player.locations << @location
+			#@player.game_log.text = @location.description
+			#@player.game_log.save
+			@player.save
+		end
+
+		if(@player.quests != [])
+			#обрати квест що проходить користувач
+			@quest = Quest.find(@player.quests.ids)
+		else
+			#вибрати новий квест для користувача 
+			@quests = @location.quests
+  			if(@quests !=[])
+				@quest = @quests[Random.new.rand(@quests.length)]
+				@player.quests.clear
+				@player.quests << @quest
+				@player.save
 			else
-				@player.locations << @location
-				get_quest
+				redirect_to new_quest_path
 			end
 		end
-		pp @quest
+
+		if(@player.variants != [])
+			@variants = Variant.find(@player.variants.ids).first.variants
+		else
+			pp @quest
+			pp @quest.variants
+			pp @variants
+			@variants = @quest.variants
+		end
 	end
 
 	def index
@@ -64,17 +83,6 @@ class LocationsController < ApplicationController
 
   	def location_params
   		params.require(:location).permit(:name,:description)
-  	end
-
-  	def get_quest
-  		@quests = @location.quests
-  		if(@quests !=[])
-		@quest = @quests[Random.new.rand(@quests.length)]
-		@player.quests << @quest
-		@player.save
-		else
-			redirect_to new_quest_path
-		end
   	end
 
 end
