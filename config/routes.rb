@@ -23,10 +23,10 @@ Rails.application.routes.draw do
 	resources :locations do
 	end
 
-	resources :quests do
+	resources :quests,except:[:show] do
 	end 
 
-	resources :variants do
+	resources :variants,except:[:show] do
 		post :check
 	end 
 

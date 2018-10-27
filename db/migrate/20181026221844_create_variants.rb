@@ -5,6 +5,8 @@ class CreateVariants < ActiveRecord::Migration[5.1]
       t.string :description
       t.integer :item_id
       t.integer :exp_id
+      t.boolean :isFinish
+      t.boolean :isDeath
 
       t.timestamps
     end

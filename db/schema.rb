@@ -147,13 +147,10 @@ ActiveRecord::Schema.define(version: 20181027093937) do
     t.string "description"
     t.integer "item_id"
     t.integer "exp_id"
+    t.boolean "isFinish"
+    t.boolean "isDeath"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "variants_map", force: :cascade do |t|
-    t.integer "var1"
-    t.integer "var2"
   end
 
 end
