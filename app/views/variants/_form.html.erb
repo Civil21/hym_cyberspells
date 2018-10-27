@@ -9,6 +9,11 @@
 </div>
 
 <div class="form-group">
+	<%= f.label "Якщо це належить квесту " %>
+	<%= f.check_box :quest_sel, class: 'form-control'%>
+</div>
+
+<div class="form-group">
 	<%= f.label :quest %>
 	<%= f.select :quest_id, Quest.all.collect { |p| [ p.name, p.id ] }, include_blank: true, class: 'form-control'%>
 </div>
@@ -19,8 +24,25 @@
 </div>
 
 <div class="form-group">
-	<%= f.label "Якщо це належить квесту " %>
-	<%= f.check_box :quest_sel, class: 'form-control'%>
+	<%= f.label :item %>
+	<%= f.select :item_id, Item.all.collect { |p| [ p.name, p.id ] }, include_blank: true, class: 'form-control'%>
 </div>
+
+<div class="form-group">
+	<%= f.label :exp %>
+	<%= f.select :exp_id, Exp.all.collect { |p| [ p.name, p.id ] }, include_blank: true, class: 'form-control'%>
+</div>
+
+<div class="form-group">
+	<%= f.label "Кінцева?" %>
+	<%= f.check_box :isFinish, class: 'form-control'%>
+</div>
+
+<div class="form-group">
+	<%= f.label "Смертельна?" %>
+	<%= f.check_box :ifDeath, class: 'form-control'%>
+</div>
+
+
 
 <%= f.submit :save %>

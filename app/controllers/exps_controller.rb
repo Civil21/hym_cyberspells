@@ -39,7 +39,7 @@ class ExpsController < ApplicationController
 		@exp ||=Exp.find(params[:id])
 	end
 
-  	def location_params
+  	def exp_params
   		params.require(:exp).permit(:name,:description)
   	end
 end

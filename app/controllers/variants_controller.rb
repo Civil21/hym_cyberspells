@@ -54,11 +54,16 @@ class VariantsController < ApplicationController
 			if(@variant.isFinish)
 				@player.location.clear
 				@player.quest.clear
-				if(@variant.exp !=[]) @player.exps << @variant.exp.first
-					if(@variant.isDeath)
-						@player.items.clear
-						@game_log.text = nil
-						@game_log.locations.clear
+				if(@variant.exp_id) 
+					@player.exps << Exp.find(@variant.exp_id)
+				end
+				if(@variant.isDeath)
+					@player.items.clear
+					@game_log.text = nil
+					@game_log.locations.clear
+				else
+					if(@variant.item_id) 
+						@player.items << Item.find(@variant.item_id) 
 					end
 				end
 				redirect_to locations_path
@@ -66,7 +71,9 @@ class VariantsController < ApplicationController
 				@player.variant << @variant
 			end
 		end
-		redirect_to location_path(@player.location.first.name)
+		if(@player.location != [])
+			redirect_to location_path(@player.location.first.name)
+		end
 	end
 
 	private 
@@ -77,7 +84,7 @@ class VariantsController < ApplicationController
 	end
 
   	def variant_params
-  		params.require(:variant).permit(:text,:description)
+  		params.require(:variant).permit(:text,:description,:isFinish,:isDeath,:item_id,:exp_id)
   	end
 
 end

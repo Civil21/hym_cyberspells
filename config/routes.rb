@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 	resources :items,except:[:show] do 
 	end
 
-	resources :exp,except:[:show] do 
+	resources :exps,except:[:show] do 
 	end
 
 	resources :locations do
