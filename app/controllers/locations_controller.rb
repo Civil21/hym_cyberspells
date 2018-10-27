@@ -17,31 +17,21 @@ class LocationsController < ApplicationController
 			#обрати квест що проходить користувач
 			@quest = Quest.find(@player.quest.ids).first
 				if(@player.variant != [])
-					pp 1
 					@variants = Variant.find(@player.variant.ids).first.variants
-					pp 2
 				else
-					pp 3
 					@variants = @quest.variants
-					pp 4
 				end
 		else
 			#вибрати новий квест для користувача 
-			pp @location.quests
-
   			if(@location.quests != [])
   				@quests = @location.quests
 				@quest = @quests[Random.new.rand(@quests.length)]
 				@player.quest.clear
 				@player.quest << @quest
 				if(@player.variant != [])
-					pp 1
 					@variants = Variant.find(@player.variant.ids).first.variants
-					pp 2
 				else
-					pp 3
 					@variants = @quest.variants
-					pp 4
 				end
 			else
 				redirect_to new_quest_path
