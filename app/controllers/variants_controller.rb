@@ -15,11 +15,22 @@ class VariantsController < ApplicationController
 	end
 
 	def create
+
+		#var1 = Vasdasd.to_i
+		#var2 = asdasd.to_i
+
+		#Variant_map.create(var1, var2)
+
+
 		@variant=Variant.create(variant_params)
 		if(params[:variant][:quest_sel]=='1')
 			Quest.find(params[:variant][:quest_id]).variants <<@variant
 		else
-			Variant.find(params[:variant][:variant_id]).variants <<@variant
+			pp @variant
+			#Variant.find(params[:variant][:variant_id]).maps << @variant.id
+			var1=Variant.find(params[:variant][:variant_id]).id.to_i 
+			var2=@variant.id.to_i
+			VariantNext.create(variant_id: var1, next: var2)
 		end
   		if @variant.save
 			redirect_to root_path  		
@@ -38,7 +49,7 @@ class VariantsController < ApplicationController
 	end
 
 	def check
-		if((@player.quest != [] and @player.quest.first.variants.include? @variant) or (@player.variant != [] and @player.variant.variants.include? @variant))
+		if((@player.quest != [] and @player.quest.first.variants.include? @variant) or (@player.variant != [] and VariantNext.new.findVariants(@player).include? @variant))
 			@player.variant.clear
 			@player.variant << @variant
 		end

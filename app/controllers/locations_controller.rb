@@ -17,7 +17,7 @@ class LocationsController < ApplicationController
 			#обрати квест що проходить користувач
 			@quest = Quest.find(@player.quest.ids).first
 				if(@player.variant != [])
-					@variants = Variant.find(@player.variant.ids).first.variants
+					@variants = VariantNext.new.findVariants(@player)
 				else
 					@variants = @quest.variants
 				end
@@ -29,7 +29,7 @@ class LocationsController < ApplicationController
 				@player.quest.clear
 				@player.quest << @quest
 				if(@player.variant != [])
-					@variants = Variant.find(@player.variant.ids).first.variants
+					@variants = VariantNext.new.findVariants(@player)
 				else
 					@variants = @quest.variants
 				end
