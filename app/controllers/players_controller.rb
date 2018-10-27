@@ -7,7 +7,8 @@ class PlayersController < ApplicationController
 	end
 
 	def show
-		@items = Item.all
+		@items = Item.find(@player.items.ids)
+		@exps = Exp.find(@player.exps.ids)
 	end
 
 	def new

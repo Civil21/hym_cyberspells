@@ -25,7 +25,18 @@
       <div class="col-sm-12 col-md-6 col-lg-6 mt-6">
       <div class="stats">
         <center><h4>Титули</h4></center>
-
+          <% @exps.each do |exp| %>
+          <div class="col-sm-6 col-md-4 col-lg-4 mt-4"><center>
+          <div class="element-card" style="background-image: url('<%= asset_path('1.jpg') %>');">
+            <div class="front-facing">
+             </div>
+             <div class="back-facing">
+              <p class="title" style="font-size: 24px"><%= exp.name %></p>
+             </div>
+            </div>
+             </center></div>
+          <%end%> 
+        </div>
       </div>
       </div>
     </div>
