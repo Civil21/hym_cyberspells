@@ -37,8 +37,6 @@ class LocationsController < ApplicationController
 				redirect_to new_quest_path
 			end
 		end
-
-
 	end
 
 	def index
@@ -60,7 +58,7 @@ class LocationsController < ApplicationController
 	def create
 		@location=Location.create(location_params)
   		if @location.save
-			redirect_to location_path(@location.name)  		
+			redirect_to locations_path	
     	else
   			render 'new'
   		end

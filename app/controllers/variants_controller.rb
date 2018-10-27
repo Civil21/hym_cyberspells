@@ -51,7 +51,20 @@ class VariantsController < ApplicationController
 	def check
 		if((@player.quest != [] and @player.quest.first.variants.include? @variant) or (@player.variant != [] and VariantNext.new.findVariants(@player).include? @variant))
 			@player.variant.clear
-			@player.variant << @variant
+			if(@variant.isFinish)
+				@player.location.clear
+				@player.quest.clear
+				if(@variant.exp !=[]) @player.exps << @variant.exp.first
+					if(@variant.isDeath)
+						@player.items.clear
+						@game_log.text = nil
+						@game_log.locations.clear
+					end
+				end
+				redirect_to locations_path
+			else
+				@player.variant << @variant
+			end
 		end
 		redirect_to location_path(@player.location.first.name)
 	end
