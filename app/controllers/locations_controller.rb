@@ -7,7 +7,7 @@ class LocationsController < ApplicationController
 	end
 
 	def index
-		@loactions = @player.locations
+		@locations = Location.all
 	end
 
 	def new

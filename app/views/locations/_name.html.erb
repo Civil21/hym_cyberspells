@@ -1,0 +1,33 @@
+  <script>
+	$(document).ready(function(){
+	
+	$('.element-card').on('click', function(){
+		
+		if ( $(this).hasClass('open') ) {
+			$(this).removeClass('open');
+		} else {
+			$('.element-card').removeClass('open');
+			$(this).addClass('open');
+		}
+		
+	});
+	
+});
+</script>
+  <%= render 'layouts/navbar' %>
+ <div class="container">
+
+ 	<% @locations.each do |location| %>
+ 	<div class="col-sm-6 col-md-4 col-lg-3 mt-4"> 
+ 	<div class="element-card">
+ 		<div class="front-facing">
+ 			<h1 class="abr">A</h1>
+		 	<p class="title"><%=location.name%></p>
+		 </div>
+		 <div class="back-facing">
+		 	<p style="font-size: 35px"><%= location.description %></p></div>
+		 	<p class="btn" href="https://en.wikipedia.org/wiki/Silver" target="_blank"><%= link_to 'More Info', location_path(location.name)  %></p>
+		 </div>
+		</div>
+ 	<%end%>	
+ </div>

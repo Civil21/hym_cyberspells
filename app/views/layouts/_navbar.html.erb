@@ -1,0 +1,23 @@
+    <nav>
+      <div class="nav-fostrap" >
+        <ul>
+          <li><%= link_to 'Home',root_path  %></li>
+          <li><a href="javascript:void(0)">Game<span class="arrow-down"></span></a>
+            <ul class="dropdown">
+              <li><%= link_to 'Quest Schedule',locations_path %></li>
+              <li><%= link_to 'Rating',root_path %></li>
+            </ul>
+          </li>
+          <li><%= link_to 'Gallery',root_path %></li>
+          <li><%= link_to 'About',about_path %></li>
+          <li><a href='https://hackyourmind.in.ua/cyber-spells/'>Contact</a></li>
+          <li><a href="javascript:void(0)"><%= @player.name%><span class="arrow-down"></span></a>
+            <ul class="dropdown">
+              <li><%= link_to 'Account',root_path %></li>
+              <li><%= link_to 'Settings',root_path %></li>
+              <li><%= link_to 'Log out',destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>

@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   def get_player
   	if(user_signed_in?)
   		if(current_user.player)
-  			@player
+  			@player=current_user.player
   		else
   			redirect_to new_player_path
   		end

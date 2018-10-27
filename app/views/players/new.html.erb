@@ -1,3 +1,18 @@
-<%=form_for :player, url:players_path() do |f|%>
-	<%= render 'players/form', f:f%>
-<%end%>
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+     <div class="login100-form-title" style="background-image: url('<%= asset_path('login-bg.jpg') %>');">
+    <span class="login100-form-title-1">
+          <%= t("new_news") %>
+        </span>
+        </div>
+		<div class="col-md-6 col-md-offset-3 login-box">
+		<center>
+			<%=form_for :player, url:players_path() do |f|%>
+				<%= render 'players/form', f:f%>
+			<%end%>
+		</center>
+		</div>
+    </div>
+  </div>
+</div>
