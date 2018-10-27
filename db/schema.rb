@@ -151,9 +151,8 @@ ActiveRecord::Schema.define(version: 20181027093937) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "variants_map", force: :cascade do |t|
-    t.integer "var1"
-    t.integer "var2"
+  create_table "variants_variants", force: :cascade do |t|
+    t.integer "variants"
   end
 
 end
