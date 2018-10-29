@@ -44,41 +44,29 @@ class VariantsController < ApplicationController
 		if((@player.quest != [] and @player.quest.first.variants.include? @variant) or (@player.variant != [] and VariantNext.new.findVariants(@player).include? @variant))
 			pp 1
 			@player.variant.clear
-			@game_log.text +="<p>"
-			@game_log.text += "Ви  "+@variant.text
-			@game_log.text += "</p>"
-			@game_log.text += "<p>"
-			@game_log.text += @variant.description
-			@game_log.text += "</p>"
+			@game_log.b("Ви  "+@variant.text)
+			@game_log.p(@variant.description)
 
 			if(@variant.exp_id ) 
 				pp 1.1
 				if(!(@player.exps.ids.include? @variant.exp_id))
-					@game_log.text += "<p>"
-					@game_log.text += "Ви отримали титул "+Exp.find(@variant.exp_id).name
-					@game_log.text += "</p>"
+					@game_log.p("Ви отримали титул "+Exp.find(@variant.exp_id).name)
 					@player.exps << Exp.find(@variant.exp_id)
 				else
-					@game_log.text += "<p>"
-					@game_log.text += "Ви уже отримали титул "+Exp.find(@variant.exp_id).name
-					@game_log.text += "</p>"
+					@game_log.p("Ви уже отримали титул "+Exp.find(@variant.exp_id).name)
 				end
 			end
 			#якщо добавити можливість стакуння предмета потрібно буде зробити через проміжну таблицю з додатковими значеннями типу у користувача є стільки предметів
 			if(@variant.item_id && !(@player.items.ids.include? @variant.item_id)) 
 				pp 1.2
-				@game_log.text += "<p>"
-				@game_log.text += "Ви отримали "+Item.find(@variant.item_id).name
-				@game_log.text += "</p>"
+				@game_log.p( "Ви отримали "+Item.find(@variant.item_id).name)
 				@player.items << Item.find(@variant.item_id) 
 			end
 
 			if(@variant.isDeath)
 				pp 1.3
 				@player.items.clear
-				@game_log.text += "<p>"
-				@game_log.text +="Ви померли під час квест, спробуйте знову , може вам повезе іншого разу!"
-				@game_log.text += "</p>"
+				@game_log.p( "Ви померли під час квест, спробуйте знову , може вам повезе іншого разу!")
 				@game_log.locations.clear
 				@game_log.text = nil
 			end
