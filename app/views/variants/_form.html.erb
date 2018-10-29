@@ -7,22 +7,19 @@
 	<%= f.label :description %>
 	<%= f.text_area :description, class: 'form-control'%>
 </div>
-
-<div class="form-group">
-	<%= f.label "Якщо це належить квесту " %>
-	<%= f.check_box :quest_sel, class: 'form-control'%>
-</div>
-
+<h4>Якщо варіант належить квесту він не може належати іншому варіанту</h4>
 <div class="form-group">
 	<%= f.label :quest %>
-	<%= f.select :quest_id, Quest.all.collect { |p| [ p.name, p.id ] }, include_blank: true, class: 'form-control'%>
+	<%= f.select :quest_ids, Quest.all.collect { |p| [ p.name, p.id ] }, include_blank: true, class: 'form-control'%>
 </div>
 
 <div class="form-group">
-	<%= f.label :variant %>
-	<%= f.select :variant_id, Variant.all.collect { |p| [ p.text, p.id ] }, include_blank: true, class: 'form-control'%>
+	<%= fields_for :next do |n| %>
+		<%= n.label :variant %>
+		<%= n.select :variant_id, Variant.all.collect { |p| [ p.text, p.id ] }, include_blank: true, class: 'form-control'%>
+	<%end%>
 </div>
-
+<h4>Нагорода за вибір</h4>
 <div class="form-group">
 	<%= f.label :item %>
 	<%= f.select :item_id, Item.all.collect { |p| [ p.name, p.id ] }, include_blank: true, class: 'form-control'%>
@@ -40,7 +37,7 @@
 
 <div class="form-group">
 	<%= f.label "Смертельна?" %>
-	<%= f.check_box :ifDeath, class: 'form-control'%>
+	<%= f.check_box :isDeath, class: 'form-control'%>
 </div>
 
 

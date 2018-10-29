@@ -1,16 +1,20 @@
 class LocationsController < ApplicationController
 	before_action :authenticate_user!
 	before_action :get_location,except:[:index,:new,:create]
+	before_action :get_game_log, only: [:show,:index]
 
 	def show
-		get_game_log
 		@game_log.locations.except(@location)
 		#перевірка чи користувач на локаціїї 
 		if(@player.location !=[])
 			@location = @player.location.first
 		else
-			@game_log.text = @game_log.text.to_s+"Ви відправились в "+@location.name.to_s
-			@game_log.text += "\n"+@location.description
+			@game_log.text =@game_log.text.to_s+ "<p>"
+			@game_log.text += "Ви відправились в "+@location.name.to_s
+			@game_log.text += "</p>"
+			@game_log.text += "<p>"
+			@game_log.text += @location.description
+			@game_log.text += "</p>"
 			@game_log.save
 			@player.location.clear
 			@player.location << @location
@@ -38,8 +42,12 @@ class LocationsController < ApplicationController
 				else
 					@variants = @quest.variants
 				end
+				@game_log.text += "<p>"
 				@game_log.text += "Ви розпочали  "+@quest.name
-				@game_log.text += "\n"+@quest.description
+				@game_log.text += "</p>"
+				@game_log.text += "<p>"
+				@game_log.text += @quest.description
+				@game_log.text += "</p>"
 				@game_log.save
 			else
 				redirect_to new_quest_path

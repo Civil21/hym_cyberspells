@@ -20,7 +20,11 @@ class PlayersController < ApplicationController
 		params[:player][:user_id]=current_user.id
 		@user=User.find(current_user.id)
   		@user.player = @player
-  		if @player.save and @user.save  			
+
+  		if @player.save and @user.save  	
+  			@game_log = GameLog.create(text: "" ,player_id: @player.id)
+  			@player.game_log = @game_log
+
 			redirect_to player_path(@player.id)  		
     	else
   			render 'new'

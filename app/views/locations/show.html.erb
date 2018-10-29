@@ -32,35 +32,7 @@
 		<%end%>
 	</div>
 </div>
-
-	<div id="live-chat">
-		
-		<header class="clearfix">
-			
-			<a href="#" class="chat-close">x</a>
-
-			<h4>Gmae Log</h4>
-
-			<span class="chat-message-counter">3</span>
-
-		</header>
-
-		<div class="chat">
-			
-			<div class="chat-history">
-				
-				<div class="chat-message clearfix">
-					
-				<hr>
-					<%= @game_log.text%>
-				<hr>
-
-			</div> <!-- end chat-history -->
-
-		</div> <!-- end chat -->
-
-	</div> <!-- end live-chat -->
-
+<%= render "/players/game_log"%>
 <script>
 $('.button1').click(function() {
   $(this).hide();
@@ -108,24 +80,5 @@ $('.wrapper').click(function() {
 		$('.opened').removeClass('opened-close');
 	}, 1100)
 })
-
-
-(function() {
-
-	$('#live-chat header').on('click', function() {
-
-		$('.chat').slideToggle(300, 'swing');
-		$('.chat-message-counter').fadeToggle(300, 'swing');
-
-	});
-
-	$('.chat-close').on('click', function(e) {
-
-		e.preventDefault();
-		$('#live-chat').fadeOut(300);
-
-	});
-
-}) ();
 </script>
 
