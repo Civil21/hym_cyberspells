@@ -1,8 +1,6 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.11.0"
-
 set :application, 'nightfall'
-set :repo_url, 'git@github.com:civil21/hym_cyberspells.git'  # Edit this to match your repository
+set :repo_url, 'git@github.com:Civil21/hym_cyberspells.git'  # Edit this to match your repository
 set :branch, :master
 set :deploy_to, '/home/deploy/nightfall'
 set :pty, true
