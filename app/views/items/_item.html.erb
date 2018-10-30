@@ -1,33 +1,14 @@
-  <script>
-	$(document).ready(function(){
-	
-	$('.element-card').on('click', function(){
-		
-		if ( $(this).hasClass('open') ) {
-			$(this).removeClass('open');
-		} else {
-			$('.element-card').removeClass('open');
-			$(this).addClass('open');
-		}
-		
-	});
-	
-});
-</script>
-  <%= render 'layouts/navbar' %>
- <div class="container">
-
- 	<% @item.each do |item| %>
- 	<div class="col-sm-6 col-md-4 col-lg-3 mt-4"> 
- 	<div class="element-card">
- 		<div class="front-facing">
- 			<h1 class="abr">A</h1>
-		 	<p class="title"><%=item.name%></p>
-		 </div>
-		 <div class="back-facing">
-		 	<p style="font-size: 35px"><%= item.description %></p></div>
-		 	<p class="btn" href="https://en.wikipedia.org/wiki/Silver" target="_blank"><%= link_to 'More Info', location_path(item.name)  %></p>
-		 </div>
-		</div>
- 	<%end%>	
- </div>
+<div class="col-sm-6 col-md-3 col-lg-2 mt-4">
+    <center>   
+        <div class="element-card">
+          	<div class="front-facing" style="background: white;">
+            	<%= image_tag item.image.url(:thumb)%>
+          	</div>
+          	<div class="back-facing">
+            	<p class="title" style="font-size: 24px">
+              		<%= item.name %>
+            	</p>
+          	</div>
+        </div>
+    </center>
+</div>

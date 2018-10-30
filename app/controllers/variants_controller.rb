@@ -44,8 +44,9 @@ class VariantsController < ApplicationController
 		if((@player.quest != [] and @player.quest.first.variants.include? @variant) or (@player.variant != [] and VariantNext.new.findVariants(@player).include? @variant))
 			pp 1
 			@player.variant.clear
-			@game_log.b("Ви  "+@variant.text)
 			@game_log.p(@variant.description)
+			@game_log.b('Ви обрали: "'+@variant.text+'"')
+			
 
 			if(@variant.exp_id ) 
 				pp 1.1
@@ -66,9 +67,9 @@ class VariantsController < ApplicationController
 			if(@variant.isDeath)
 				pp 1.3
 				@player.items.clear
-				@game_log.p( "Ви померли під час квест, спробуйте знову , може вам повезе іншого разу!")
-				@game_log.locations.clear
 				@game_log.text = nil
+				@game_log.h3( "Ви померли під час квесту, спробуйте знову , може вам повезе іншого разу!")
+				@game_log.locations.clear
 			end
 			if(@variant.isFinish)
 				pp 1.4

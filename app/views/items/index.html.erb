@@ -1,38 +1,11 @@
 <%= render 'layouts/navbar' %>
 
-  <div class="container">
-    <div class="row">
-    	<h3 class="text-center margin-bottom-lg position-relative">Предмети</h3>
- 	 <% @items.each do |item| %>
-          <div class="col-sm-6 col-md-3 col-lg-2 mt-4"><center>
-            
-          <div class="element-card">
-            <%= image_tag item.image.url(:thumb) do %>
-            <div class="front-facing">
-             </div>
-             <%end%>
-             <div class="back-facing">
-              <p class="title" style="font-size: 24px"><%= item.name %></p>
-             </div>
-            </div>
-             </center></div>
-          <%end%> 
-    </div>
+<div class="container">
+<div class="row">
+  <h3 class="text-center margin-bottom-lg position-relative">Предмети:</h3>
+ 	<%=render @items%>
+</div>
 </div>
  <script>
   	$("#nav").addClass('nav-color2');
-	$(document).ready(function(){
-	
-	$('.element-card').on('click', function(){
-		
-		if ( $(this).hasClass('open') ) {
-			$(this).removeClass('open');
-		} else {
-			$('.element-card').removeClass('open');
-			$(this).addClass('open');
-		}
-		
-	});
-	
-});
 </script>

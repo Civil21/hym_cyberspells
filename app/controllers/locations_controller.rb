@@ -9,13 +9,12 @@ class LocationsController < ApplicationController
 		if(@player.location !=[])
 			@location = @player.location.first
 		else
-			@game_log.b("Ви відправились в "+@location.name.to_s)
 			@game_log.p (@location.description)
+			@game_log.b("Ви відправились в "+@location.name.to_s)
+			
 			@game_log.save
 			@player.location.clear
 			@player.location << @location
-			#@player.game_log.text = @location.description
-			#@player.game_log.save
 		end
 
 		if(@player.quest != [])
@@ -38,8 +37,9 @@ class LocationsController < ApplicationController
 				else
 					@variants = @quest.variants
 				end
-				@game_log.b("Ви розпочали  "+@quest.name)
 				@game_log.p(@quest.description)
+				@game_log.b("Ви розпочали  "+@quest.name)
+				
 				@game_log.save
 			else
 				redirect_to new_quest_path

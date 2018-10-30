@@ -10,17 +10,7 @@
         <center><h4>Інвентар</h4></center>
         
           <% @items.each do |item| %>
-          <div class="col-sm-6 col-md-4 col-lg-4 mt-4"><center>
-          <div class="element-card" >
-            <%= image_tag item.image.url(:thumb) do %>
-            <div class="front-facing">
-             </div>
-             <%end%>
-             <div class="back-facing">
-              <p class="title" style="font-size: 24px"><%= item.name %></p>
-             </div>
-            </div>
-             </center></div>
+          <%= render '/items/item', item:item %> 
           <%end%> 
         </div>
       
@@ -28,15 +18,7 @@
       <div class="stats">
         <center><h4>Титули</h4></center>
           <% @exps.each do |exp| %>
-          <div class="col-sm-6 col-md-4 col-lg-4 mt-4"><center>
-          <div class="element-card" style="background-image: url('<%= asset_path('1.jpg') %>');">
-            <div class="front-facing">
-             </div>
-             <div class="back-facing">
-              <p class="title" style="font-size: 24px"><%= exp.name %></p>
-             </div>
-            </div>
-             </center></div>
+          <%=render '/exps/exp', exp:exp %>
           <%end%> 
         </div>
       </div>
@@ -44,20 +26,3 @@
     </div>
   </div>
 </section>
-
- <script>
-  $(document).ready(function(){
-  
-  $('.element-card').on('click', function(){
-    
-    if ( $(this).hasClass('open') ) {
-      $(this).removeClass('open');
-    } else {
-      $('.element-card').removeClass('open');
-      $(this).addClass('open');
-    }
-    
-  });
-  
-});
-</script>
