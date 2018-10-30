@@ -284,9 +284,9 @@ DEPENDENCIES
   activeadmin
   bootstrap-sass (~> 3.3.7)
   byebug
-  capistrano
+  capistrano (~> 3.10)
   capistrano-bundler
-  capistrano-rails
+  capistrano-rails (~> 1.4)
   capistrano-rvm
   capistrano3-puma
   capybara (~> 2.13)
