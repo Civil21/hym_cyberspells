@@ -49,7 +49,7 @@ group :development, :test do
   gem 'selenium-webdriver'
 end
 
-gem 'figaro'
+#gem 'figaro'
 
 gem 'pg'
 
